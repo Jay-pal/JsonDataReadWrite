@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h3 class="mb-4 text-center">Add New Data</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item" [class.active]="SamplingTime === today" (click)="selectTime(today)">{{ today }}</li>
+                <li class="list-group-item" [class.active]="SamplingTime === tomorrow" (click)="selectTime(tomorrow)">{{ tomorrow }}</li>
+                <li class="list-group-item" [class.active]="SamplingTime === dayAfterTomorrow" (click)="selectTime(dayAfterTomorrow)">{{ dayAfterTomorrow }}</li>
+            </ul>
+        </div>
+        
+        <div class="col-md-8">
+            <form [formGroup]="constructionForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Project Name:</label>
+                    <input type="text" formControlName="projectName" class="form-control form-control-sm">
+                </div>
+                <div class="form-group">
+                    <label>Construction Count:</label>
+                    <input type="number" formControlName="constructionCount" class="form-control form-control-sm">
+                </div>
+                <div class="form-group">
+                    <label>Is Construction Completed:</label>
+                    <span class="mr-10">
+                        <input type="checkbox" formControlName="isConstructionCompleted">
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Length of the Road:</label>
+                    <div class="input-group input-group-sm">
+                        <input type="number" formControlName="lengthOfRoad" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text">KM</span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-dark btn-sm">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
