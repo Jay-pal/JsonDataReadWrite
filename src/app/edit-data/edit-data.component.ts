@@ -88,8 +88,8 @@ export class EditDataComponent implements OnInit {
   onSubmit(value: any) {
 
     const updatedData: Data = {
-      id: this.data.id,  // Keep the same ID
-      SamplingTime: this.SamplingTime, // Keep the selected SamplingTime
+      id: this.data.id, 
+      SamplingTime: this.SamplingTime,
       Properties: [
         { Label: "Project Name", Value: value.projectName },
         { Label: "Construction Count", Value: value.constructionCount },
@@ -97,8 +97,6 @@ export class EditDataComponent implements OnInit {
         { Label: "Length of the road", Value: value.lengthOfRoad }
       ]
     };
-
-    console.log(value)
     this._jsonService.updateData(this.id, updatedData).subscribe({
       next: (res) => {
         if (window.confirm("Updated Successfully. Do you want to go back to the home page?")) {

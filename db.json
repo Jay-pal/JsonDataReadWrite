@@ -3,8 +3,8 @@
   "Name": "New Observation",
   "Datas": [
     {
-      "id": "dac4",
-      "SamplingTime": "09-02-2025 3:28:30 PM",
+      "id": "cc3f",
+      "SamplingTime": "08-02-2025 4:07:15 PM",
       "Properties": [
         {
           "Label": "Project Name",
@@ -12,7 +12,7 @@
         },
         {
           "Label": "Construction Count",
-          "Value": 12
+          "Value": 14
         },
         {
           "Label": "Is Construction Completed",
@@ -20,17 +20,61 @@
         },
         {
           "Label": "Length of the road",
-          "Value": 6.853
+          "Value": 5.65
         }
       ]
     },
     {
-      "id": "dac5",
-      "SamplingTime": "09-02-2025 10:54:34 AM",
+      "id": "bc0e",
+      "SamplingTime": "08-02-2025 4:07:05 PM",
       "Properties": [
         {
           "Label": "Project Name",
           "Value": "Road Construction 2"
+        },
+        {
+          "Label": "Construction Count",
+          "Value": ""
+        },
+        {
+          "Label": "Is Construction Completed",
+          "Value": true
+        },
+        {
+          "Label": "Length of the road",
+          "Value": 3.2
+        }
+      ]
+    },
+    {
+      "id": "317c",
+      "SamplingTime": "09-02-2025 4:06:53 PM",
+      "Properties": [
+        {
+          "Label": "Project Name",
+          "Value": "Road Construction 3"
+        },
+        {
+          "Label": "Construction Count",
+          "Value": ""
+        },
+        {
+          "Label": "Is Construction Completed",
+          "Value": true
+        },
+        {
+          "Label": "Length of the road",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "id": "dafe",
+      "SamplingTime": "09-02-2025 4:06:21 PM",
+      "Properties": [
+        {
+          "Label": "Project Name",
+          "Value": "Testing Data"
         },
         {
           "Label": "Construction Count",
@@ -42,65 +86,7 @@
         },
         {
           "Label": "Length of the road",
-          "Value": 3.45
-        }
-      ]
-    },
-    {
-      "id": "dac6",
-      "SamplingTime": "2021-04-23T11:00:05.5081232+05:30",
-      "Properties": [
-        {
-          "Value": "Road Construction 3",
-          "Label": "Project Name"
-        },
-        {
-          "Value": false,
-          "Label": "Is COnstruction Completed"
-        }
-      ]
-    },
-    {
-      "id": "bd65",
-      "SamplingTime": "07-02-2025 10:54:52 AM",
-      "Properties": [
-        {
-          "Label": "Project Name",
-          "Value": "Testing Data"
-        },
-        {
-          "Label": "Construction Count",
           "Value": 45
-        },
-        {
-          "Label": "Is Construction Completed",
-          "Value": false
-        },
-        {
-          "Label": "Length of the road",
-          "Value": 4
-        }
-      ]
-    },
-    {
-      "id": "790d",
-      "SamplingTime": "07-02-2025 3:29:35 PM",
-      "Properties": [
-        {
-          "Label": "Project Name",
-          "Value": "New Record"
-        },
-        {
-          "Label": "Construction Count",
-          "Value": 75
-        },
-        {
-          "Label": "Is Construction Completed",
-          "Value": false
-        },
-        {
-          "Label": "Length of the road",
-          "Value": 852
         }
       ]
     }
