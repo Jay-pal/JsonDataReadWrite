@@ -8,35 +8,20 @@ import { map, toArray } from 'rxjs/operators';
 })
 export class JsondataService {
 
-  url = "http://localhost:3000/Datas/"
+  APIUrl = "https://localhost:44363/api/Observation/"
   constructor(private _http: HttpClient) {
 
   }
 
-
   public getJsonData() {
-    return this._http.get(this.url);
+    return this._http.get(this.APIUrl+"ReadJson");
   }
 
   public addNewJsonData(data: any) {
-    return this._http.post(this.url, data);
+    return this._http.post(this.APIUrl + "AddJsonData", data);
   }
 
   public updateData(id: string, data: any) {
-    return this._http.put(this.url + id, data);
+    return this._http.put(this.APIUrl + "UpdateDataItem/" + id, data);
   }
-
-  // APIUrl = "https://localhost:44363/api/Observation/"
-
-  // public getJsonData() {
-  //   return this._http.get(this.APIUrl+"GetObservations");
-  // }
-
-  // public addNewJsonData(data: any) {
-  //   return this._http.post(this.APIUrl + "AddDataItem", data);
-  // }
-
-  // public updateData(id: string, data: any) {
-  //   return this._http.put(this.APIUrl + "UpdateDataItem/" + id, data);
-  // }
 }

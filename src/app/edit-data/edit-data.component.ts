@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsondataService } from 'src/services/jsondata.service';
-import { map } from 'rxjs/operators'
-import { Data } from '../property';
 
 @Component({
   selector: 'app-edit-data',
@@ -17,7 +15,7 @@ export class EditDataComponent implements OnInit {
   tomorrow = this.formatDate(new Date(new Date().setDate(new Date().getDate() + 1)));
   dayAfterTomorrow = this.formatDate(new Date(new Date().setDate(new Date().getDate() + 2)));
   SamplingTime = this.today;
-  data!: Data;
+  data: any;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private _jsonService: JsondataService,
     private _router: Router
@@ -39,6 +37,7 @@ export class EditDataComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
+      console.log(this.id);
     });
     this.getData();
   }
@@ -62,19 +61,16 @@ export class EditDataComponent implements OnInit {
   }
 
   getData() {
-    this._jsonService.getJsonData().pipe(
-      map(data =>
-        Array.isArray(data) ? data.find(data => data.id === this.id) : null
-      )
-    ).subscribe({
-      next: (res) => {
-        if (res) {
-          this.data = res;
+    this._jsonService.getJsonData().subscribe({
+      next: (res: any) => {
+        if (res && Array.isArray(res.datas)){
+          this.data = res.datas.find((d: any) => d.id === this.id)
+          console.log(this.data);
           const formValues = {
-            projectName: this.data.Properties.find((p) => (p as { Label: string; Value: any }).Label === "Project Name")?.Value || '',
-            constructionCount: this.data.Properties.find((p) => (p as { Label: string; Value: any }).Label === "Construction Count")?.Value || '',
-            isConstructionCompleted: this.data.Properties.find((p) => (p as { Label: string; Value: any }).Label === "Is Construction Completed")?.Value || false,
-            lengthOfRoad: this.data.Properties.find((p) => (p as { Label: string; Value: any }).Label === "Length of the road")?.Value || ''
+            projectName: this.data.properties.find((p:any) => (p as { label: string; value: any }).label === "Project Name")?.value || '',
+            constructionCount: this.data.properties.find((p:any) => (p as { label: string; value: any }).label === "Construction Count")?.value || '',
+            isConstructionCompleted: this.data.properties.find((p:any) => (p as { label: string; value: any }).label === "Is Construction Completed")?.value || false,
+            lengthOfRoad: this.data.properties.find((p:any) => (p as { label: string; value: any }).label === "Length of the road")?.value || ''
           };
           this.editDataForm.patchValue(formValues);
         }
@@ -87,8 +83,8 @@ export class EditDataComponent implements OnInit {
 
   onSubmit(value: any) {
 
-    const updatedData: Data = {
-      id: this.data.id, 
+    const updatedData: any = {
+      id: this.data.id,
       SamplingTime: this.SamplingTime,
       Properties: [
         { Label: "Project Name", Value: value.projectName },

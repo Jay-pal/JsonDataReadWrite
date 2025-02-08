@@ -18,11 +18,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of data">
-          <td>{{ item.SamplingTime }}</td>
-          <td>{{ getPropertyValue(item.Properties, 'Project Name') }}</td>
-          <td>{{ getPropertyValue(item.Properties, 'Construction Count') }}</td>
-          <td>{{ getPropertyValue(item.Properties, 'Is Construction Completed') }}</td>
-          <td>{{ getPropertyValue(item.Properties, 'Length of the road') }}</td>
+          <td>{{ item.samplingTime }}</td>
+          <td>{{ getPropertyValue(item.properties, 'Project Name') }}</td>
+          <td>{{ getPropertyValue(item.properties, 'Construction Count') }}</td>
+          <td>{{ getPropertyValue(item.properties, 'Is Construction Completed') }}</td>
+          <td>{{ getPropertyValue(item.properties, 'Length of the road') }}</td>
           <td><button class="btn btn-primary btn-sm" (click)="editData(item.id)"> Edit </button></td>
         </tr>
       </tbody>

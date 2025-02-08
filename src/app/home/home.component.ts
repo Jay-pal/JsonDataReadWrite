@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { toArray } from 'rxjs/operators';
 import { JsondataService } from 'src/services/jsondata.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { JsondataService } from 'src/services/jsondata.service';
 })
 export class HomeComponent implements OnInit {
 
-  data: any;
+  data:any;
   constructor(private _jsonService: JsondataService, private router: Router) {
     this.getData();
   }
@@ -20,8 +19,8 @@ export class HomeComponent implements OnInit {
 
   getData() {
     this._jsonService.getJsonData().subscribe({
-      next: (res) => {
-        this.data = res;
+      next: (res:any) => {
+        this.data = Array.isArray(res.datas) ? res.datas : []; 
       },
       error: (err) => {
         alert("There is some problem while fetching the details...");
@@ -30,8 +29,8 @@ export class HomeComponent implements OnInit {
   }
 
   getPropertyValue(properties: any[], label: string) {
-    const property = properties.find(p => p.Label.toLowerCase() === label.toLowerCase());
-    return property ? property.Value : '-';
+    const property = properties.find(p => p.label === label);
+    return property ? property.value : '-';
   }
 
 
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['add-data']);
   }
 
-  editData(id:string) {
+  editData(id: string) {
     this.router.navigate(['edit-data'], {
       queryParams: {
         id: id
